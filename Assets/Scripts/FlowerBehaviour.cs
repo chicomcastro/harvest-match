@@ -1,21 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FlowerBehaviour : MonoBehaviour
 {
     public GameObject petalsObj;
+    public GameObject playerObj;
+
+    private readonly float harvestingDistance = 1.5f;
 
     // Start is called before the first frame update
     void Start()
     {
         Material[] flowerKinds = FlowerDiversityController.instance.flowerKinds;
         petalsObj.GetComponent<MeshRenderer>().material = flowerKinds[Random.Range(0, flowerKinds.Length)];
+
+        playerObj = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-        
+        Vector3 posDiff = playerObj.transform.position - transform.position;
+        if (posDiff.magnitude > harvestingDistance)
+        {
+            return;
+        }
+        Destroy(this.gameObject);
+        // TODO add to player inventory
     }
 }
