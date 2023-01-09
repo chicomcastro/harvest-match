@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class PickupManager : MonoBehaviour
 {
-    public PlayerController playerController;
+    [SerializeField]
+    private PlayerController playerController;
+
+    [SerializeField]
+    private string pickupButton;
+
+    private FlowerBehaviour pickupableFlower;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +20,8 @@ public class PickupManager : MonoBehaviour
             return;
         }
         flowerBehaviour.HighlightFlower();
+        pickupableFlower = flowerBehaviour;
+        StartCoroutine(HandlePickupFlower());
     }
 
     private void OnTriggerExit(Collider other)
@@ -24,5 +32,15 @@ public class PickupManager : MonoBehaviour
             return;
         }
         flowerBehaviour.UnhighlightFlower();
+        pickupableFlower = null;
+    }
+
+    private IEnumerator HandlePickupFlower()
+    {
+        yield return new WaitUntil(() => Input.GetButtonDown(pickupButton) || pickupableFlower == null);
+        if (pickupableFlower != null)
+        {
+            pickupableFlower.HarvestFlower();
+        }
     }
 }

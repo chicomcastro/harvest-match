@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    public Vector2 InputVector { get; private set; }
+    [SerializeField]
+    private string horizontalAxisName = "Horizontal";
 
+    [SerializeField]
+    private string verticalAxisName = "Vertical";
+
+    public Vector2 InputVector { get; private set; }
     public Vector3 MousePosition { get; private set; }
-    // Update is called once per frame
+
     void Update()
     {
-        var h = Input.GetAxis("Horizontal");
-        var v = Input.GetAxis("Vertical");
+        var h = Input.GetAxis(horizontalAxisName);
+        var v = Input.GetAxis(verticalAxisName);
         InputVector = new Vector2(h, v);
 
         MousePosition = Input.mousePosition;

@@ -10315,6 +10315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 4547762318438589554}
+  pickupButton: Fire1
 --- !u!54 &1005359175
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24224,6 +24225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0368981312c321c43ba0c2b3c9782488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalAxisName: Horizontal
+  verticalAxisName: Vertical
 --- !u!1001 &8299181212908394303
 PrefabInstance:
   m_ObjectHideFlags: 0

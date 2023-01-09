@@ -13,6 +13,7 @@ public class FlowerBehaviour : MonoBehaviour
     {
         Material[] flowerKinds = FlowerDiversityController.instance.flowerKinds;
         petalsObj.GetComponent<MeshRenderer>().material = flowerKinds[Random.Range(0, flowerKinds.Length)];
+        originalColor = petalsObj.GetComponent<MeshRenderer>().material.color;
 
         playerObj = GameObject.FindGameObjectWithTag("Player");
     }
@@ -30,12 +31,12 @@ public class FlowerBehaviour : MonoBehaviour
     public void HarvestFlower()
     {
         Destroy(this.gameObject);
+        UnhighlightFlower();
         playerObj.GetComponent<PlayerController>().HarvestFlower(petalsObj.GetComponent<MeshRenderer>().material);
     }
 
     public void HighlightFlower()
     {
-        originalColor = petalsObj.GetComponent<MeshRenderer>().material.color;
         petalsObj.GetComponent<MeshRenderer>().material.color = originalColor * 1.5f;
     }
 
