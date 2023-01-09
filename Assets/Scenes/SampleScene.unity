@@ -24209,7 +24209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateTowardMouse: 0
-  movementSpeed: 0
+  movementSpeed: 10
   rotationSpeed: 10
   Camera: {fileID: 963194227}
 --- !u!114 &4547762318438589558
