@@ -1,5 +1,7 @@
 # harvest-match
 
+![alt text](https://github.com/chicomcastro/harvest-match/blob/master/Screenshots/1.png)
+
 A tiny game to implement the harvest side of a farming game
 
 ## Links
