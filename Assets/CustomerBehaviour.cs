@@ -13,6 +13,7 @@ public class CustomerBehaviour : MonoBehaviour
     public List<GameObject> desiringFlowerImageList = new List<GameObject>();
 
     private Vector3 target;
+    private bool hasFinishService = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +44,7 @@ public class CustomerBehaviour : MonoBehaviour
         transform.LookAt(target);
 
         float distance = (target - transform.position).magnitude;
-        if (distance < 1.75f)
+        if (distance < 1.75f && !hasFinishService)
         {
             customerCanvasPanel.SetActive(true);
         }
@@ -62,11 +63,14 @@ public class CustomerBehaviour : MonoBehaviour
             }
             if (desiringFlowerImageList.Count == 0)
             {
+                hasFinishService = true;
+                customerCanvasPanel.SetActive(false);
                 StartCoroutine(GoAway());
             }
         }
         else
         {
+            // TODO animate angry
             print("não contem");
         }
     }
@@ -74,7 +78,9 @@ public class CustomerBehaviour : MonoBehaviour
     private IEnumerator GoAway()
     {
         GetComponent<NavMeshAgent>().destination = transform.position - transform.right * 5f;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f + Random.Range(0.5f, 1f));
+        CustomerSpawner.instance.SpawnNewCustomer();
+        yield return new WaitForSeconds(Random.Range(0.5f, 1f));
         this.gameObject.SetActive(false);
     }
 }
