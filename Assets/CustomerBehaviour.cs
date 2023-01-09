@@ -67,6 +67,7 @@ public class CustomerBehaviour : MonoBehaviour
                 customerCanvasPanel.SetActive(false);
                 StartCoroutine(GoAway());
             }
+            ScoreManager.instance.CountScore();
         }
         else
         {
@@ -77,7 +78,8 @@ public class CustomerBehaviour : MonoBehaviour
 
     private IEnumerator GoAway()
     {
-        GetComponent<NavMeshAgent>().destination = transform.position - transform.right * 5f;
+        target = transform.position - transform.right * 5f;
+        GetComponent<NavMeshAgent>().destination = target;
         yield return new WaitForSeconds(0.5f + Random.Range(0.5f, 1f));
         CustomerSpawner.instance.SpawnNewCustomer();
         yield return new WaitForSeconds(Random.Range(0.5f, 1f));

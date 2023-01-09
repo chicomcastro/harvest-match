@@ -23,6 +23,11 @@ public class FlowerBehaviour : MonoBehaviour
         {
             return;
         }
+        HarvestFlower();
+    }
+
+    public void HarvestFlower()
+    {
         Destroy(this.gameObject);
         playerObj.GetComponent<PlayerController>().HarvestFlower(petalsObj.GetComponent<MeshRenderer>().material);
     }
