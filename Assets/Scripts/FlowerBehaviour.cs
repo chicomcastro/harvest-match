@@ -6,6 +6,7 @@ public class FlowerBehaviour : MonoBehaviour
 
     private GameObject playerObj;
     private readonly float harvestingDistance = 1.5f;
+    private Color originalColor;
 
     // Start is called before the first frame update
     void Start()
@@ -30,5 +31,16 @@ public class FlowerBehaviour : MonoBehaviour
     {
         Destroy(this.gameObject);
         playerObj.GetComponent<PlayerController>().HarvestFlower(petalsObj.GetComponent<MeshRenderer>().material);
+    }
+
+    public void HighlightFlower()
+    {
+        originalColor = petalsObj.GetComponent<MeshRenderer>().material.color;
+        petalsObj.GetComponent<MeshRenderer>().material.color = originalColor * 1.5f;
+    }
+
+    public void UnhighlightFlower()
+    {
+        petalsObj.GetComponent<MeshRenderer>().material.color = originalColor;
     }
 }
