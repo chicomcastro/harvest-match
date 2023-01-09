@@ -23539,6 +23539,10 @@ PrefabInstance:
       value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4547762318438589552, guid: f634a6bb736f5174a8f485708a719f97, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547762318438589552, guid: f634a6bb736f5174a8f485708a719f97, type: 3}
       propertyPath: m_AngularSpeed
       value: 1800
       objectReference: {fileID: 0}
@@ -23565,6 +23569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38271c8d4bd5b9648a682f54b0fa4110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displacementOffset: 8
 --- !u!1001 &8299181212908394303
 PrefabInstance:
   m_ObjectHideFlags: 0

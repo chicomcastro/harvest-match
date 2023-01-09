@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private readonly float horizontalSpeed = 1f;
     private readonly float verticalSpeed = 1f;
+    private readonly float horizontalSpeed = 1f;
 
     private NavMeshAgent agent;
 
@@ -22,11 +22,16 @@ public class PlayerMovement : MonoBehaviour
         // Get the horizontal and vertical axis.
         // By default they are mapped to the arrow keys.
         // The value is in the range -1 to 1
-        float translation = Input.GetAxis("Vertical") * horizontalSpeed;
-        float rotation = Input.GetAxis("Horizontal") * verticalSpeed;
+        float verticalDisplacement = Input.GetAxis("Vertical") * verticalSpeed;
+        float horizontalDisplacement = Input.GetAxis("Horizontal") * horizontalSpeed;
 
-        Vector3 movingDir = (Vector3.forward * translation + Vector3.right * rotation).normalized;
-        Vector3 targetPos = transform.position + movingDir * displacementOffset;
-        agent.destination = targetPos;
+        Vector3 movingDir = (Vector3.forward * verticalDisplacement + Vector3.right * horizontalDisplacement).normalized;
+        Vector3 targetDisplacement = movingDir.magnitude > 0.1f ? movingDir * displacementOffset * Time.deltaTime : Vector3.zero;
+        transform.Translate(targetDisplacement, Space.World);
+        if (targetDisplacement.magnitude > 0.1f)
+        {
+            Quaternion rotation = Quaternion.LookRotation(targetDisplacement, Vector3.up);
+            transform.rotation = rotation;
+        }
     }
 }
