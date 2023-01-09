@@ -39,7 +39,6 @@ public class CustomerBehaviour : MonoBehaviour
         transform.LookAt(target);
 
         float distance = (target - transform.position).magnitude;
-        print(distance);
         if (distance < 1.75f)
         {
             customerCanvasPanel.SetActive(true);
