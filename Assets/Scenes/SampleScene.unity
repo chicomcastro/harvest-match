@@ -24208,8 +24208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8f5768a63cccb48ac53b731e2f15ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotateTowardMouse: 0
-  MovementSpeed: 10
+  rotateTowardMouse: 0
+  movementSpeed: 0
   rotationSpeed: 10
   Camera: {fileID: 963194227}
 --- !u!114 &4547762318438589558
