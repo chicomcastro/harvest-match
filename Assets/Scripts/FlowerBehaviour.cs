@@ -3,8 +3,8 @@ using UnityEngine;
 public class FlowerBehaviour : MonoBehaviour
 {
     public GameObject petalsObj;
-    public GameObject playerObj;
 
+    private GameObject playerObj;
     private readonly float harvestingDistance = 1.5f;
 
     // Start is called before the first frame update
@@ -24,6 +24,6 @@ public class FlowerBehaviour : MonoBehaviour
             return;
         }
         Destroy(this.gameObject);
-        // TODO add to player inventory
+        playerObj.GetComponent<PlayerController>().HarvestFlower(petalsObj.GetComponent<MeshRenderer>().material);
     }
 }

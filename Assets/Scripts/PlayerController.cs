@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject holdingFlower;
+
+    private void Start()
     {
-        
+        holdingFlower.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HarvestFlower(Material flowerKind)
     {
-        
+        holdingFlower.GetComponent<FlowerBehaviour>().petalsObj.GetComponent<MeshRenderer>().material = flowerKind;
+        holdingFlower.SetActive(true);
+    }
+
+    public void DeliveryFlower()
+    {
+        holdingFlower.SetActive(false);
     }
 }
