@@ -4,35 +4,28 @@ public class FlowerBehaviour : MonoBehaviour
 {
     public GameObject petalsObj;
 
-    private GameObject playerObj;
     private readonly float harvestingDistance = 1.5f;
     private Color originalColor;
 
     // Start is called before the first frame update
     void Start()
     {
-        Material[] flowerKinds = FlowerDiversityController.instance.flowerKinds;
-        petalsObj.GetComponent<MeshRenderer>().material = flowerKinds[Random.Range(0, flowerKinds.Length)];
-        originalColor = petalsObj.GetComponent<MeshRenderer>().material.color;
-
-        playerObj = GameObject.FindGameObjectWithTag("Player");
-    }
-
-    private void OnMouseDown()
-    {
-        Vector3 posDiff = playerObj.transform.position - transform.position;
-        if (posDiff.magnitude > harvestingDistance)
+        PlayerController playerController = transform.GetComponentInParent<PlayerController>();
+        if (playerController != null)
         {
             return;
         }
-        HarvestFlower();
+        Material newFlower = FlowerDiversityController.instance.GenerateNewFlower(this.gameObject);
+        petalsObj.GetComponent<MeshRenderer>().material = newFlower;
+        originalColor = petalsObj.GetComponent<MeshRenderer>().material.color;
     }
 
-    public void HarvestFlower()
+    public void HarvestFlower(PlayerController playerController)
     {
-        Destroy(this.gameObject);
         UnhighlightFlower();
-        playerObj.GetComponent<PlayerController>().HarvestFlower(petalsObj.GetComponent<MeshRenderer>().material);
+        playerController.HarvestFlower(petalsObj.GetComponent<MeshRenderer>().material);
+        FlowerDiversityController.instance.FlowerWasHarvested(this.gameObject);
+        Destroy(this.gameObject);
     }
 
     public void HighlightFlower()

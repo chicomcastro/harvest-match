@@ -18,14 +18,17 @@ public class CustomerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        print("NEW CUSTOMER --------");
         customerCanvasPanel.SetActive(false);
 
         int maxDesiredFlowersCount = LevelManager.instance.GetMaxItemLevelMap();
-        int desiredFlowersCount = Random.Range(1, maxDesiredFlowersCount + 1);
-        Material[] flowerKinds = FlowerDiversityController.instance.flowerKinds;
-        for(int i = 0; i < desiredFlowersCount; i++)
+        int desiredFlowersQuant = Random.Range(1, maxDesiredFlowersCount + 1);
+
+        Color[] flowersToRequest = FlowerDiversityController.instance.RequestSomeAvailableFlowerKinds(desiredFlowersQuant);
+
+        for(int i = 0; i < flowersToRequest.Length; i++)
         {
-            Color desiredFlower = flowerKinds[Random.Range(0, flowerKinds.Length)].color;
+            Color desiredFlower = flowersToRequest[i];
             GameObject gamo = Instantiate(desiringFlowerImagePrefab, customerCanvasPanel.transform);
             gamo.GetComponent<Image>().color = desiredFlower;
             desiringFlowerImageList.Add(gamo);
@@ -52,6 +55,7 @@ public class CustomerBehaviour : MonoBehaviour
 
     public void ReceiveOrder(Color order)
     {
+        FlowerDiversityController.instance.MarkFlowerAsDelivered(order);
         if (desiredFlowers.Contains(order))
         {
             print("contem");
@@ -72,7 +76,7 @@ public class CustomerBehaviour : MonoBehaviour
         else
         {
             // TODO animate angry
-            print("não contem");
+            print("This flower was not requested");
         }
     }
 
@@ -80,9 +84,7 @@ public class CustomerBehaviour : MonoBehaviour
     {
         target = transform.position - transform.right * 5f;
         GetComponent<NavMeshAgent>().destination = target;
-        yield return new WaitForSeconds(0.5f + Random.Range(0.5f, 1f));
-        CustomerSpawner.instance.SpawnNewCustomer();
         yield return new WaitForSeconds(Random.Range(0.5f, 1f));
-        this.gameObject.SetActive(false);
+        Destroy(this.gameObject);
     }
 }

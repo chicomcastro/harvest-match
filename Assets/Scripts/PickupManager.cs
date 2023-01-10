@@ -40,7 +40,7 @@ public class PickupManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetButtonDown(pickupButton) || pickupableFlower == null);
         if (pickupableFlower != null)
         {
-            pickupableFlower.HarvestFlower();
+            pickupableFlower.HarvestFlower(playerController);
         }
     }
 }

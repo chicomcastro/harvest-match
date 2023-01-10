@@ -9,6 +9,8 @@ public class CustomerSpawner : MonoBehaviour
 
     public static CustomerSpawner instance;
 
+    private GameObject currentCustomer;
+
     private void Awake()
     {
         instance = this;
@@ -16,6 +18,17 @@ public class CustomerSpawner : MonoBehaviour
 
     public void SpawnNewCustomer()
     {
-        Instantiate(customerPrefab, spawn.position, Quaternion.identity);
+        if (!FlowerDiversityController.instance.HasAvailableFlowers())
+        {
+            GameManager.instance.GameOver();
+        }
+        currentCustomer = Instantiate(customerPrefab, spawn.position, Quaternion.identity);
+        StartCoroutine(WaitCustomerToLeave());
+    }
+
+    private IEnumerator WaitCustomerToLeave()
+    {
+        yield return new WaitUntil(() => currentCustomer == null);
+        SpawnNewCustomer();
     }
 }
