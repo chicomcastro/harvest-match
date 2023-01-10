@@ -25,6 +25,7 @@ public class FlowerBehaviour : MonoBehaviour
         UnhighlightFlower();
         playerController.HarvestFlower(petalsObj.GetComponent<MeshRenderer>().material);
         FlowerDiversityController.instance.FlowerWasHarvested(this.gameObject);
+        TimeManager.instance.StartDeliveryTimer();
         Destroy(this.gameObject);
     }
 

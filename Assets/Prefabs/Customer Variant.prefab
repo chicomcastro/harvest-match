@@ -27,7 +27,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817051379}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1694647570}
@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 4.14909}
+  m_AnchoredPosition: {x: 0, y: 4.8}
   m_SizeDelta: {x: 2.5, y: 2.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &817051384
@@ -253,7 +253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2862027689656643730, guid: d73255411bbfbea4fb475696cfe8922e, type: 3}
       propertyPath: m_Name
-      value: Customer
+      value: Customer Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d73255411bbfbea4fb475696cfe8922e, type: 3}

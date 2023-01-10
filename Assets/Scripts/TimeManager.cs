@@ -8,6 +8,14 @@ public class TimeManager : MonoBehaviour
     public Text timeTextUI;
     public int totalTime = 60;
     private int currentTime;
+    private float deliveryTimer = 0f;
+
+    public static TimeManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -29,5 +37,15 @@ public class TimeManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void StartDeliveryTimer()
+    {
+        deliveryTimer = Time.time;
+    }
+
+    public float CountDeliveryTime()
+    {
+        return Time.time - deliveryTimer;
     }
 }

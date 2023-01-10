@@ -20,9 +20,13 @@ public class ScoreManager : MonoBehaviour
         scoreTextUI.text = "Score: " + currentScore.ToString();
     }
 
-    public void CountScore()
+    public void CountScore(bool haveDeliveredRightOrder)
     {
-        currentScore += 500;
+        int deliveryScore = haveDeliveredRightOrder ? 500 : -250;
+        print(deliveryScore);
+        int timeScore = haveDeliveredRightOrder ? Mathf.FloorToInt(1f / TimeManager.instance.CountDeliveryTime() * 500) : 0;
+        print(timeScore);
+        currentScore += Mathf.FloorToInt((deliveryScore + timeScore) / 10) * 10;
         scoreTextUI.text = "Score: " + currentScore.ToString();
     }
 }

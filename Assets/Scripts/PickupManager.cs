@@ -10,7 +10,7 @@ public class PickupManager : MonoBehaviour
     [SerializeField]
     private string pickupButton;
 
-    private FlowerBehaviour pickupableFlower;
+    private List<FlowerBehaviour> pickupableFlowers = new List<FlowerBehaviour>();
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,8 +20,7 @@ public class PickupManager : MonoBehaviour
             return;
         }
         flowerBehaviour.HighlightFlower();
-        pickupableFlower = flowerBehaviour;
-        StartCoroutine(HandlePickupFlower());
+        pickupableFlowers.Add(flowerBehaviour);
     }
 
     private void OnTriggerExit(Collider other)
@@ -32,15 +31,16 @@ public class PickupManager : MonoBehaviour
             return;
         }
         flowerBehaviour.UnhighlightFlower();
-        pickupableFlower = null;
+        pickupableFlowers.Remove(flowerBehaviour);
     }
 
-    private IEnumerator HandlePickupFlower()
+    private void Update()
     {
-        yield return new WaitUntil(() => Input.GetButtonDown(pickupButton) || pickupableFlower == null);
-        if (pickupableFlower != null)
+        if (Input.GetButtonDown(pickupButton) && pickupableFlowers.Count > 0)
         {
+            FlowerBehaviour pickupableFlower = pickupableFlowers[pickupableFlowers.Count - 1];
             pickupableFlower.HarvestFlower(playerController);
+            pickupableFlowers.Remove(pickupableFlower);
         }
     }
 }

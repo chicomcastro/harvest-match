@@ -58,7 +58,7 @@ public class CustomerBehaviour : MonoBehaviour
         FlowerDiversityController.instance.MarkFlowerAsDelivered(order);
         if (desiredFlowers.Contains(order))
         {
-            print("contem");
+            print("Flower was delivered successfully");
             GameObject gamo = desiringFlowerImageList.Find((flower) => flower.GetComponent<Image>().color == order);
             if (gamo != null)
             {
@@ -71,12 +71,13 @@ public class CustomerBehaviour : MonoBehaviour
                 customerCanvasPanel.SetActive(false);
                 StartCoroutine(GoAway());
             }
-            ScoreManager.instance.CountScore();
+            ScoreManager.instance.CountScore(true);
         }
         else
         {
             // TODO animate angry
             print("This flower was not requested");
+            ScoreManager.instance.CountScore(false);
         }
     }
 
