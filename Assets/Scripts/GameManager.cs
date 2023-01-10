@@ -24,5 +24,6 @@ public class GameManager : MonoBehaviour
     {
         player.SetActive(false);
         gameOverPanel.SetActive(true);
+        // TODO count and show total score
     }
 }
