@@ -9,6 +9,7 @@ public class TimeManager : MonoBehaviour
     public int totalTime = 60;
     private int currentTime;
     private float deliveryTimer = 0f;
+    private float startTime = 0f;
 
     public static TimeManager instance;
 
@@ -24,6 +25,7 @@ public class TimeManager : MonoBehaviour
 
     private IEnumerator CountTime()
     {
+        startTime = Time.time;
         currentTime = totalTime;
         while(true)
         {
@@ -47,5 +49,10 @@ public class TimeManager : MonoBehaviour
     public float CountDeliveryTime()
     {
         return Time.time - deliveryTimer;
+    }
+
+    public float CountLevelTime()
+    {
+        return Time.time - startTime;
     }
 }
