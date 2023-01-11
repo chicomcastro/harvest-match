@@ -17,18 +17,11 @@ public class PlayerController : MonoBehaviour
         harvestedFlowerColor = flowerKind.color;
         holdingFlower.GetComponent<FlowerBehaviour>().petalsObj.GetComponent<MeshRenderer>().material = flowerKind;
         holdingFlower.SetActive(true);
-        StartCoroutine(DeliveryFlower());
     }
 
-    private IEnumerator DeliveryFlower()
+    public void DeliveryFlowerOn(CustomerService customerService)
     {
-        GameObject currentTend = LevelManager.instance.tends[0];
-        yield return new WaitUntil(() =>
-        {
-            float distance = (transform.position - currentTend.transform.position).magnitude;
-            return distance < 1.2f;
-        });
-        currentTend.GetComponent<CustomerService>().DeliveryCustomerOrder(harvestedFlowerColor);
+        customerService.DeliveryCustomerOrder(harvestedFlowerColor);
         holdingFlower.SetActive(false);
     }
 }
