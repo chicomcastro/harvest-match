@@ -90,7 +90,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeliveryVase (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1962584265450110510, guid: a42e94ddeacb3374abb057627ae6e132, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a42e94ddeacb3374abb057627ae6e132, type: 3}
 --- !u!4 &3940281070262598250 stripped
 Transform:
@@ -152,7 +153,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeliveryVase (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1962584265450110510, guid: a42e94ddeacb3374abb057627ae6e132, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a42e94ddeacb3374abb057627ae6e132, type: 3}
 --- !u!4 &529545905952749423 stripped
 Transform:
@@ -214,7 +216,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeliveryVase
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1962584265450110510, guid: a42e94ddeacb3374abb057627ae6e132, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a42e94ddeacb3374abb057627ae6e132, type: 3}
 --- !u!4 &7094429696261296617 stripped
 Transform:
@@ -338,7 +341,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeliveryVase (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1962584265450110510, guid: a42e94ddeacb3374abb057627ae6e132, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a42e94ddeacb3374abb057627ae6e132, type: 3}
 --- !u!4 &6611461511620061708 stripped
 Transform:
