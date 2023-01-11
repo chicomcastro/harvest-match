@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 817051384}
   - component: {fileID: 817051383}
   - component: {fileID: 817051382}
+  - component: {fileID: 1412245976}
   m_Layer: 0
   m_Name: CustomerCanvas
   m_TagString: Untagged
@@ -37,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 4.8}
-  m_SizeDelta: {x: 2.5, y: 2.5}
+  m_SizeDelta: {x: 5, y: 2.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &817051384
 Canvas:
@@ -100,6 +101,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1412245976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817051379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a5df588bcb0324290a639f35a7bbbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1694647569
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +209,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 0.5, y: 1}
+  m_CellSize: {x: 1, y: 1}
   m_Spacing: {x: 0.1, y: 0.1}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -213,15 +226,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1857500570283754701, guid: d73255411bbfbea4fb475696cfe8922e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1857500570283754701, guid: d73255411bbfbea4fb475696cfe8922e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7180003
+      value: 0.7179998
       objectReference: {fileID: 0}
     - target: {fileID: 1857500570283754701, guid: d73255411bbfbea4fb475696cfe8922e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.17
+      value: -1.2341328
       objectReference: {fileID: 0}
     - target: {fileID: 1857500570283754701, guid: d73255411bbfbea4fb475696cfe8922e, type: 3}
       propertyPath: m_LocalRotation.w
